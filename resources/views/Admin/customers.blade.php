@@ -1,16 +1,10 @@
 @extends('layouts.admin-layout')
 
 @section('content')
-	<!-- [ Pre-loader ] End -->
-	<!-- [ navigation menu ] start -->
     @include('includes.admin-sidenav')
-	<!-- [ navigation menu ] end -->
-	<!-- [ Header ] start -->
+    
     @include('includes.admin-header')
-	<!-- [ Header ] end -->
-	
-	
-
+    
 <!-- [ Main Content ] start -->
 <div class="pcoded-main-container">
     <div class="pcoded-content">
@@ -45,40 +39,33 @@
                             <table id="report-table" class="table mb-0">
                                 <thead>
                                     <tr>
-                                        <th>Image</th>
                                         <th>Name</th>
                                         <th>Email</th>
                                         <th>Phone</th>
                                         <th>Create Date</th>
-                                        <th>Status</th>
                                         <th>Options</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($customers as $customer)
                                          <tr>
-                                        <td>
-                                            <img src="assets/images/user/avatar-3.jpg" class="img-fluid img-radius wid-40" alt="">
-                                        </td>
                                         <td>{{ $customer -> name}}</td>
                                         <td>{{ $customer -> email}}</td>
                                         <td>{{ $customer -> number}}</td>
                                         <td>{{ $customer -> created_at -> format('d / m / Y')}}</td>
-                                        <td><span class="badge badge-success">Active</span></td>
                                         <td>
                                             <a href="#" 
-                                        class="btn btn-info btn-sm view-product" 
-                                        data-toggle="modal" 
-                                        data-target="#modal-report2"
-                                        data-name="{{ $customer -> name }}"
-                                        data-email="{{ $customer -> email }}"
-                                        data-number="{{ $customer -> number }}"
-                                        data-image="{{ asset('storage/uploads/profile-images/'.$customer -> image) }}"
-                                        data-date="{{ $customer -> created_at -> format('d / M / Y') }}">
-                                        <i class="feather icon-eye"></i>
-                                     </a>
-                                            {{-- <a href="#!" data-toggle="modal" data-target="#modal-report2" class="btn btn-info btn-sm"><i class="feather icon-edit"></i>&nbsp;View </a> --}}
-                                            <a href="#!" class="btn btn-info btn-sm"><i class="feather icon-edit"></i>&nbsp;Edit </a>
+                                                class="btn btn-info btn-sm view-product" 
+                                                data-toggle="modal" 
+                                                data-target="#modal-report2"
+                                                data-name="{{ $customer -> name }}"
+                                                data-email="{{ $customer -> email }}"
+                                                data-number="{{ $customer -> number }}"
+                                                data-image="{{ asset('storage/uploads/profile-images/'.$customer -> image) }}"
+                                                data-date="{{ $customer -> created_at -> format('d / M / Y') }}">
+                                                <i class="feather icon-eye"></i>
+                                            </a>
+                                            {{-- <a href="#!" class="btn btn-info btn-sm"><i class="feather icon-edit"></i>&nbsp;Edit </a> --}}
                                             <a href="#!" class="btn btn-danger btn-sm"><i class="feather icon-trash-2"></i>&nbsp;Delete </a>
                                         </td>
                                     </tr>
@@ -115,7 +102,7 @@
                                             <div class="carousel slide carousel-fade" data-ride="carousel">
                                                 <div class="carousel-inner">
                                                     <div class="carousel-item active">
-                                                        <img id="modalCustomerImage" src="" class="d-block w-100" alt="Customer images">
+                                                        <img src="../assets/images/user.png" class="d-block w-50" alt="Customer images">
                                                     </div>
                                                 </div>
                                             </div>
@@ -163,10 +150,10 @@
 <!-- [ Main Content ] end -->
 
     <!-- Required Js -->
-    <script src="assets1/js/vendor-all.min.js"></script>
+    <script src="../assets1/js/vendor-all.min.js"></script>
 
-    <script src="assets1/js/plugins/jquery.dataTables.min.js"></script>
-    <script src="assets1/js/plugins/dataTables.bootstrap4.min.js"></script>
+    <script src="../assets1/js/plugins/jquery.dataTables.min.js"></script>
+    <script src="../assets1/js/plugins/dataTables.bootstrap4.min.js"></script>
 
     <script>
         // DataTable start

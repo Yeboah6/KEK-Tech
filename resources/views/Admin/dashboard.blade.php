@@ -31,39 +31,32 @@
         <!-- [ Main Content ] start -->
         <div class="row">
             <!-- seo analytics start -->
-            <div class="col-xl-3 col-md-6">
+            <div class="col-xl-4 col-md-6">
                 <div class="card">
                     <div class="card-body">
                         <h3>{{ $products}}</h3>
-                        <p class="text-muted">Products</p>
+                        <h4 class="text-muted">Products</h4>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-md-6">
+            <div class="col-xl-4 col-md-6">
                 <div class="card">
                     <div class="card-body">
-                        <h3>0</h3>
-                        <p class="text-muted">Orders</p>
+                        <h3>{{ $order }}</h3>
+                        <h4 class="text-muted">Orders</h4>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-md-6">
+            <div class="col-xl-4 col-md-6">
                 <div class="card">
                     <div class="card-body">
                         <h3>{{ $customers}}</h3>
-                        <p class="text-muted">Customers</p>
+                        <h4 class="text-muted">Customers</h4>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-md-6">
-                <div class="card">
-                    <div class="card-body">
-                        <h3>0</h3>
-                        <p class="text-muted">Total Usage</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-8 col-md-12">
+            <div class="col-xl-4 col-md-6"></div>
+            <div class="col-lg-12">
                 <div class="card table-card latest-activity-card">
                     <div class="card-header">
                         <h5>Latest Order</h5>
@@ -99,87 +92,32 @@
                                     <tr>
                                         <td>John Deo</td>
                                         <td>#814123</td>
-                                        <td><img src="assets/images/widget/PHONE1.jpg" alt="" class="img-fluid"></td>
+                                        <td><img src="../assets/images/widget/PHONE1.jpg" alt="" class="img-fluid"></td>
                                         <td>Moto G5</td>
                                         <td>10</td>
                                         <td>17-2-2019</td>
                                         <td><label class="badge badge-light-warning">Pending</label></td>
-                                        <td><a href="#!"><i class="icon feather icon-edit f-w-600 f-16 m-r-15 text-c-green"></i></a><a href="#!"><i class="feather icon-trash-2 f-w-600 f-16 text-c-red"></i></a></td>
+                                        <td>
+                                            {{-- <a href="#!"><i class="icon feather icon-edit f-w-600 f-16 m-r-15 text-c-green"></i></a> --}}
+                                            <a href="#!"><i class="feather icon-trash-2 f-w-600 f-16 text-c-red"></i></a>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>Jenny William</td>
                                         <td>#684898</td>
-                                        <td><img src="assets/images/widget/PHONE2.jpg" alt="" class="img-fluid"></td>
+                                        <td><img src="../assets/images/widget/PHONE2.jpg" alt="" class="img-fluid"></td>
                                         <td>iPhone 8</td>
                                         <td>16</td>
                                         <td>20-2-2019</td>
                                         <td><label class="badge badge-light-primary">Paid</label></td>
-                                        <td><a href="#!"><i class="icon feather icon-edit f-w-600 f-16 m-r-15 text-c-green"></i></a><a href="#!"><i class="feather icon-trash-2 f-w-600 f-16 text-c-red"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Lori Moore</td>
-                                        <td>#454898</td>
-                                        <td><img src="assets/images/widget/PHONE3.jpg" alt="" class="img-fluid"></td>
-                                        <td>Redmi 4</td>
-                                        <td>20</td>
-                                        <td>17-2-2019</td>
-                                        <td><label class="badge badge-light-success">Success</label></td>
-                                        <td><a href="#!"><i class="icon feather icon-edit f-w-600 f-16 m-r-15 text-c-green"></i></a><a href="#!"><i class="feather icon-trash-2 f-w-600 f-16 text-c-red"></i></a></td>
+                                        <td>
+                                            {{-- <a href="#!"><i class="icon feather icon-edit f-w-600 f-16 m-r-15 text-c-green"></i></a> --}}
+                                            <a href="#!"><i class="feather icon-trash-2 f-w-600 f-16 text-c-red"></i></a>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Latest Order end -->
-            <div class="col-md-12 col-xl-4">
-                <div class="card ">
-                    <div class="card-body ">
-                        <br><br>
-                        <h2 class="text-center f-w-400 ">$45,567</h2>
-                        <p class="text-center text-muted ">Monthly Profit</p>
-                        <br><br><br>
-                        <div class="m-t-20">
-                            <div class="row ">
-                                <div class="col-6 text-center ">
-                                    <h6 class="f-20 f-w-400">$6,234</h6>
-                                    <p class="text-muted f-14 m-b-0">Today</p>
-                                </div>
-                                <div class="col-6 text-center ">
-                                    <h6 class="f-20 f-w-400">$4,387</h6>
-                                    <p class="text-muted f-14 m-b-0">Yesterday</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- order  start -->
-            <div class="col-md-12 col-xl-4">
-                <div class="card bg-c-yellow order-card">
-                    <div class="card-body">
-                        <h6 class="text-white">Revenue</h6>
-                        <h2 class="text-white">$42,562</h2>
-                        <i class="card-icon feather icon-filter"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-xl-4">
-                <div class="card bg-c-blue order-card">
-                    <div class="card-body">
-                        <h6 class="text-white">Orders Received</h6>
-                        <h2 class="text-white">486</h2>
-                        <i class="card-icon feather icon-users"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-xl-4">
-                <div class="card bg-c-green order-card">
-                    <div class="card-body">
-                        <h6 class="text-white">Total Sales</h6>
-                        <h2 class="text-white">1641</h2>
-                        <i class="card-icon feather icon-radio"></i>
                     </div>
                 </div>
             </div>

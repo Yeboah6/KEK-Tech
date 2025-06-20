@@ -11,14 +11,22 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('carts', function (Blueprint $table) {
+        Schema::create('delivery_addresses', function (Blueprint $table) {
             $table->id();
-
             $table -> bigInteger('customer_id')->unsigned()->index()->nullable();
             $table -> foreign('customer_id') -> references('id') -> on('customers') ->onDelete('cascade');
 
-            $table -> string('product_id'); // Link address_id to Delivery Address
-            $table -> string('cart_quantity');
+            $table -> string('country');
+            $table -> string('first_name');
+            $table -> string('last_name');
+            $table -> string('company_name') -> nullable();
+            $table -> string('address_1');
+            $table -> string('address_2') -> nullable();
+            $table -> string('city');
+            $table -> string('state');
+            $table -> string('zip_code');
+            $table -> string('email');
+            $table -> string('number');
             $table->timestamps();
         });
     }
@@ -28,6 +36,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('carts');
+        Schema::dropIfExists('delivery_addresses');
     }
 };

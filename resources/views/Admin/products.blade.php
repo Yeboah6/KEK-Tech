@@ -51,10 +51,8 @@
                                         <th>Product ID</th>
                                         <th>Product</th>
                                         <th>Category</th>
-                                        <th>Added Date</th>
                                         <th>Price</th>
                                         <th>Quantity</th>
-                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -73,17 +71,11 @@
                                            {{ $product -> category}}
                                        </td>
                                        <td class="align-middle">
-                                           {{ $product -> created_at -> format('d / M / Y')}}
-                                       </td>
-                                       <td class="align-middle">
                                            ${{ $product -> price}}
                                        </td>
                                    
                                        <td class="align-middle">
                                            {{ $product -> quantity}}
-                                       </td>
-                                       <td class="align-middle">
-                                           <span class="badge badge-danger">Deactive</span>
                                        </td>
                                        <td class="table-action">
                                         <a href="#" 
@@ -104,7 +96,7 @@
                                         </a>
                                      
                                            <a href="#!"  data-toggle="modal" data-target="#modal-report3" class="btn btn-icon btn-outline-success"><i class="feather icon-edit"></i></a>
-                                           <a href="{{'/delete-product/'.$product -> id}}" class="btn btn-icon btn-outline-danger"><i class="feather icon-trash-2"></i></a>
+                                           <a href="{{'/admin/delete-product/'.$product -> id}}" class="btn btn-icon btn-outline-danger"><i class="feather icon-trash-2"></i></a>
                                        </td>
                                        </tr>
                                    @endforeach
@@ -146,12 +138,10 @@
                                 <label class="floating-label" for="Category">Category</label>
                                 <select class="form-control" name="category" id="Category">
                                     <option value=""></option>
-                                    <option value="Sony">Sony</option>
-                                    <option value="Laptops">Laptops</option>
-                                    <option value="Routers">Routers</option>
-                                    <option value="Chargers">Chargers</option>
-                                    <option value="HeadPhones & Speakers">HeadPhones & Speakers</option>
-                                    <option value="Cars & Automobiles">Cars & Automobiles</option>
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category -> category}}">{{ $category -> category}}</option>
+                                    @endforeach
+                                    
                                 </select>
                             </div>
                         </div>

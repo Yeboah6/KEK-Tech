@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use App\Models\Admin;
+use App\Models\Cart;
 use App\Models\Customer;
+use App\Models\DeliveryAddress;
 
 class AuthController extends Controller
 {
@@ -22,8 +24,7 @@ class AuthController extends Controller
             'name' => 'required|unique:customers',
             'email' => 'required|email|unique:customers',
             'number' => 'required|string',
-            'password' => 'required|min:8|max:12',
-            'image' => 'nullable|'
+            'password' => 'required|min:8|max:12'
         ]);
 
         $customer = new Customer();
@@ -84,4 +85,46 @@ class AuthController extends Controller
             return redirect('/login');
         }
     }
+
+    public function account() {
+        $data = [];
+        $cartCount = 0;
+        $addresses = collect(); // Initialize as empty array
+        
+        if(Session::has('loginId')) {
+            $data = Customer::where('id', '=', Session::get('loginId'))->first();
+            
+            if ($data) { // Check if customer exists
+                $cartCount = Cart::where('customer_id', $data->id)->count();
+                $addresses = DeliveryAddress::where('customer_id', $data->id)->get();
+                    foreach ($addresses as $address) {
+                        if ($address -> customer_id == $data -> id) {
+                            {
+                                return view('auth.account', compact('data', 'cartCount', 'address'));
+                            }
+                        }
+                    }
+                        
+            }
+        }
+        
+    
+        
+    }
+
+    // public function account() {
+    //     $data = [];
+    //     if(Session::has('loginId')) {
+    //         $data = Customer::where('id', '=', Session::get('loginId')) -> first();
+    //     }
+
+    //     $cartCount = 0;
+    //     if (!empty($data)) {
+    //         $cartCount = Cart::where('customer_id', $data->id)->count();
+    //     }
+
+    //     $address = DeliveryAddress::where('customer_id', $data -> id) -> get();
+
+    //     return view('auth.account', compact('data', 'cartCount', 'address'));
+    // }
 }

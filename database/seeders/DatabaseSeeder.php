@@ -21,5 +21,30 @@ class DatabaseSeeder extends Seeder
             'email' => 'ecommerce@admin.com',
             'password' => Hash::make('1234567890')
         ]);
+
+        \App\Models\Category::create([
+            'category' => 'Sony',
+            'image' => '../assets/images/image8.jpg'
+        ]);
+        \App\Models\Category::create([
+            'category' => 'Laptops',
+            'image' => '../assets/images/image8.jpg'
+        ]);
+        \App\Models\Category::create([
+            'category' => 'Routers',
+            'image' => '../assets/images/image8.jpg'
+        ]);
+        \App\Models\Category::create([
+            'category' => 'Chargers',
+            'image' => '../assets/images/image8.jpg'
+        ]);
+        \App\Models\Category::create([
+            'category' => 'Headphones & Speakers',
+            'image' => '../assets/images/image20.jpg'
+        ]);
+        \App\Models\Category::create([
+            'category' => 'Cars & Automobiles',
+            'image' => '../assets/images/image8.jpg'
+        ]);
     }
 }

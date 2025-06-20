@@ -29,23 +29,6 @@
 			</div>
 		</div>
 
-		<div class="colorlib-featured">
-			<div class="container">
-				<div class="row">
-				    @foreach ($categories as $category)
-				        <div class="col-sm-4 text-center">
-				            <div class="featured">
-				                <div class="featured-img featured-img-2" style="background-image: url({{asset($category->image)}}); height: 50%;">
-				                    <h4 style="color: #fff">{{$category->category}}</h4>
-				                    <p><a href="{{ url('/single-product/'.$category->category) }}" class="btn btn-primary btn-lg">Shop now</a></p>
-				                </div>
-				            </div>
-				        </div>
-				    @endforeach
-				</div>
-			</div>
-		</div>
-
 		<div class="colorlib-product">
 			<div class="container">
 				<div class="row">
@@ -54,20 +37,35 @@
 					</div>
 				</div>
 				<div class="row row-pb-md">
-					@foreach ($products as $product)
+					@foreach ($categoryData as $product)
 						<div class="col-md-3 col-lg-3 mb-4 text-center">
 						<div class="product-entry border">
-							<a href="{{url('/view-product/'.$product -> id)}}" class="prod-img">
+							<a href="#" class="prod-img">
 								<img src="{{asset('storage/uploads/product-images/'.$product -> product_image)}}" class="img-fluid" alt="Free html5 bootstrap 4 template">
 							</a>
 							<div class="desc">
-								<h2><a href="{{url('/view-product/'.$product -> id)}}">{{$product -> product_name}}</a></h2>
+								<h2><a href="#">{{$product -> product_name}}</a></h2>
 								<span class="price">¢{{$product -> price}}</span>
 							</div>
 						</div>
 					</div>
 					@endforeach
 					<div class="w-100"></div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<div class="block-27">
+		               <ul>
+			               <li><a href="#"><i class="ion-ios-arrow-back"></i></a></li>
+		                  <li class="active"><span>1</span></li>
+		                  <li><a href="#">2</a></li>
+		                  <li><a href="#">3</a></li>
+		                  <li><a href="#">4</a></li>
+		                  <li><a href="#">5</a></li>
+		                  <li><a href="#"><i class="ion-ios-arrow-forward"></i></a></li>
+		               </ul>
+		            </div>
+					</div>
 				</div>
 			</div>
 		</div>

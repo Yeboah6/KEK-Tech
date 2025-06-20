@@ -3,7 +3,7 @@
 
 <head>
 
-	<title>Ecommerce Website</title>
+	<title>KEK Tech</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -28,7 +28,7 @@
 			<div class="row align-items-center text-center">
 				<div class="col-md-12">
 					<div class="card-body">
-                        <h3>E-commerce Website</h3>
+                        <h3>KEK Tech</h3>
 						<h4 class="mb-3 f-w-400">Login</h4>
                         <form action="{{ url('/login') }}" method="POST">
                             @if (Session::has('success'))

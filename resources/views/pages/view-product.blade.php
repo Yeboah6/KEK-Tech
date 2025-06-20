@@ -8,7 +8,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col">
-						<p class="bread"><span><a href="index.html">Home</a></span> / <span>Product Details</span></p>
+						<p class="bread"><span><a href="/">Home</a></span> / <span>Product Details</span></p>
 					</div>
 				</div>
 			</div>
@@ -21,30 +21,23 @@
 					<div class="col-sm-8">
 						<div class="owl-carousel">
 							<div class="item">
-								<div class="product-entry border">
+								<div class="product-entry">
 									<a href="#" class="prod-img">
-										<img src="../assets/images/item-1.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template">
+										<img src="{{asset('storage/uploads/product-images/'.$product -> product_image)}}" class="img-fluid" alt="{{$product -> product_name}}" style="width: 90%">
 									</a>
 								</div>
 							</div>
 							<div class="item">
-								<div class="product-entry border">
+								<div class="product-entry">
 									<a href="#" class="prod-img">
-										<img src="../assets/images/item-2.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template">
+										<img src="{{asset('storage/uploads/product-images/'.$product -> product_image2)}}" class="img-fluid" alt="{{$product -> product_name}}" style="width: 50%">
 									</a>
 								</div>
 							</div>
 							<div class="item">
-								<div class="product-entry border">
+								<div class="product-entry">
 									<a href="#" class="prod-img">
-										<img src="../assets/images/item-3.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template">
-									</a>
-								</div>
-							</div>
-							<div class="item">
-								<div class="product-entry border">
-									<a href="#" class="prod-img">
-										<img src="../assets/images/item-4.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template">
+										<img src="{{asset('storage/uploads/product-images/'.$product -> product_image3)}}" class="img-fluid" alt="{{$product -> product_name}}" style="width: 50%">
 									</a>
 								</div>
 							</div>
@@ -52,33 +45,53 @@
 					</div>
 					<div class="col-sm-4">
 						<div class="product-desc">
-							<h3>Women's Boots Shoes Maca</h3>
+							<h3>{{$product -> product_name}}</h3>
 							<p class="price">
-								<span>$68.00</span>
+								<span>¢{{$product -> price}}</span>
 							</p>
-							<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
-							
-                     <div class="input-group mb-4">
-                     	<span class="input-group-btn">
-                        	<button type="button" class="quantity-left-minus btn"  data-type="minus" data-field="">
-                           <i class="icon-minus2"></i>
-                        	</button>
-                    		</span>
-                     	<input type="text" id="quantity" name="quantity" class="form-control input-number" value="1" min="1" max="100">
-                     	<span class="input-group-btn ml-1">
-                        	<button type="button" class="quantity-right-plus btn" data-type="plus" data-field="">
-                             <i class="icon-plus2"></i>
-                         </button>
-                     	</span>
-                  	</div>
-                  	<div class="row">
-	                  	<div class="col-sm-12 text-center">
-									<p class="addtocart"><a href="cart.html" class="btn btn-primary btn-addtocart"><i class="icon-shopping-cart"></i> Add to Cart</a></p>
+							<p>{{$product -> description}}</p>
+
+                            <form action="{{ route('add.to.cart') }}" method="POST">
+								@if (Session::has('success'))
+				    	        	<div class="alert alert-success">{{ Session::get('success') }}</div>
+				            	@endif
+				            	@if (Session::has('fail'))
+				            		<div class="alert alert-danger">{{ Session::get('fail') }}</div>
+				            	@endif
+
+								@csrf
+
+								<div class="input-group mb-4">
+									<span class="input-group-btn">
+										<button type="button" class="quantity-left-minus btn" data-type="minus" data-field="">
+											<i class="icon-minus2"></i>
+										</button>
+									</span>
+									<input type="text" id="quantity" name="cart_quantity" class="form-control input-number" value="1" min="1" max="100">
+									<span class="input-group-btn ml-1">
+										<button type="button" class="quantity-right-plus btn" data-type="plus" data-field="">
+											<i class="icon-plus2"></i>
+										</button>
+									</span>
 								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+                                <input type="text" hidden name="product_id" value="{{$product -> id}}">
+								@if (Session::has('loginId'))
+									<input type="text" hidden name="customer_id" value="{{$data -> id}}">
+								@endif
+							
+                  				<div class="row">
+	                  				<div class="col-sm-12 text-center">
+										@if (Session::has('loginId'))
+											<button type="submit" class="btn btn-primary btn-addtocart"><i class="icon-shopping-cart"></i> Add to Cart</button>
+                                        @else
+								        	<p class="addtocart"><a href="/signup" class="btn btn-primary btn-addtocart"><i class="icon-shopping-cart"></i> Add to Cart</a></p>
+								        @endif
+									</div>
+								</div>
+							</form>
+				        </div>
+		        	</div>
+		        </div>
 
 				<div class="row">
 					<div class="col-sm-12">
@@ -120,6 +133,40 @@
 
 		@include('includes.footer')
 	</div>
+
+    <script>
+		document.addEventListener('DOMContentLoaded', function () {
+			const quantityInput = document.getElementById('quantity');
+			const btnMinus = document.querySelector('.quantity-left-minus');
+			const btnPlus = document.querySelector('.quantity-right-plus');
+	
+			// Function to update the quantity value
+			function updateQuantity(delta) {
+				let currentValue = parseInt(quantityInput.value) || 1;
+				const minValue = parseInt(quantityInput.min) || 1;
+				const maxValue = parseInt(quantityInput.max) || 100;
+	
+				currentValue += delta;
+	
+				if (currentValue < minValue) {
+					currentValue = minValue;
+				} else if (currentValue > maxValue) {
+					currentValue = maxValue;
+				}
+	
+				quantityInput.value = currentValue;
+			}
+	
+			// Event listeners for buttons
+			btnMinus.addEventListener('click', function () {
+				updateQuantity(-1);
+			});
+	
+			btnPlus.addEventListener('click', function () {
+				updateQuantity(1);
+			});
+		});
+	</script>
 
 
 @endsection

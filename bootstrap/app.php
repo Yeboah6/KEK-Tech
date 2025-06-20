@@ -12,7 +12,7 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware): void {
          $middleware->alias([
-            // 'isLoggedIn' => \App\Http\Middleware\AuthCheck::class,
+            'isLoggedIn' => \App\Http\Middleware\AuthCheck::class,
             'isAdminLoggedIn' => \App\Http\Middleware\AdminAuthCheck::class
         ]);
     })

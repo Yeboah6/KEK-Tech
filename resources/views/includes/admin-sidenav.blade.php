@@ -9,26 +9,17 @@
 						<label>Navigation</label>
 					</li>
 					<li class="nav-item">
-						<a href="/dashboard" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Dashboard</span></a>
+						<a href="/admin/dashboard" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Dashboard</span></a>
 					</li>
 					<li class="nav-item">
 						<a href="/admin/products" class="nav-link "><span class="pcoded-micon"><i class="feather icon-layers"></i></span><span class="pcoded-mtext">Products</span></a>
 					</li>
 					<li class="nav-item">
-						<a href="/customers" class="nav-link"><span class="pcoded-micon"><i class="feather icon-users"></i></span><span class="pcoded-mtext">Customers</span></a>
+						<a href="/admin/customers" class="nav-link"><span class="pcoded-micon"><i class="feather icon-users"></i></span><span class="pcoded-mtext">Customers</span></a>
 					</li>
                     <li class="nav-item">
-						<a href="/orders" class="nav-link"><span class="pcoded-micon"><i class="feather icon-users"></i></span><span class="pcoded-mtext">Orders</span></a>
+						<a href="/admin/orders" class="nav-link"><span class="pcoded-micon"><i class="feather icon-users"></i></span><span class="pcoded-mtext">Orders</span></a>
 					</li>
-                    <li class="nav-item">
-						<a href="" class="nav-link"><span class="pcoded-micon"><i class="feather icon-users"></i></span><span class="pcoded-mtext">Payments</span></a>
-					</li>
-                    {{-- <li class="nav-item">
-						<a href="/customers" class="nav-link"><span class="pcoded-micon"><i class="feather icon-users"></i></span><span class="pcoded-mtext">Customers</span></a>
-					</li> --}}
-                    {{-- <li class="nav-item">
-						<a href="/customers" class="nav-link"><span class="pcoded-micon"><i class="feather icon-users"></i></span><span class="pcoded-mtext">Customers</span></a>
-					</li> --}}
 				</ul>
 				
 			</div>

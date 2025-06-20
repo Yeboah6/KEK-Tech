@@ -3,7 +3,7 @@
 
 <head>
 
-	<title>Ecommerce Website</title>
+	<title>KEK Tech</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -28,7 +28,7 @@
 			<div class="row align-items-center text-center">
 				<div class="col-md-12">
 					<div class="card-body">
-                        <h3>E-commerce Website</h3>
+                        <h3>KEK Tech</h3>
 						<h4 class="mb-3 f-w-400">Sign up</h4>
                         <form action="{{ url('/signup') }}" method="POST">
                             @if (Session::has('success'))
@@ -39,14 +39,6 @@
 				            @endif
                             
                             @csrf
-							<div class="form-group mb-3">
-						    	<label class="floating-label" for="Role">Role</label>
-								<select class="form-control" name="role">
-									<option selected> -- Select Role -- </option>
-									<option value="customer">Customer</option>
-								</select>
-						    	{{-- <input type="text" class="form-control" id="Username" placeholder="" name="name"> --}}
-						    </div>
 						    <div class="form-group mb-3">
 						    	<label class="floating-label" for="Username">Name</label>
 						    	<input type="text" class="form-control" id="Username" placeholder="" name="name">

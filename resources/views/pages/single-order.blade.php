@@ -118,8 +118,8 @@
                                     
                                     <h3 class="mt-4">Payment Instructions</h3>
                                     @php
-                                        $state = strtolower(trim($order->address->state ?? ''));
-                                        $isAccra = $state === 'Greater Accra' || $state === 'Accra';
+										$state = strtolower(trim($order->address->state ?? ''));
+										$isAccra = $state === 'greater accra' || $state === 'accra';
                                     @endphp
                                     @if($isAccra)
                                         <div class="alert alert-warning">

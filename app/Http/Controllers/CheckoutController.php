@@ -113,7 +113,7 @@ class CheckoutController extends Controller
             'company_name' => 'required|string|max:255',
             'country' => 'required|string|max:255',
             'address_1' => 'required|string|max:255',
-            'address_2' => 'string|max:255',
+            'address_2' => 'nullable|string|max:255',
             'city' => 'required|string|max:255',
             'state' => 'required|string|max:255',
             'zip_code' => 'required|string|max:20',

@@ -130,9 +130,16 @@
 							</div>
 		               	</div>
 
-						<div class="text-center">
-							<button type="submit" class="btn btn-primary">Add Address</button>
-						</div>
+						@if(isset($addresses) && count($addresses) > 0)
+							<div class="text-center">
+								<button type="button" class="btn btn-primary" disabled>You already have an address</button>
+								<small class="text-danger d-block mt-2">You cannot add another address.</small>
+							</div>
+						@else
+							<div class="text-center">
+								<button type="submit" class="btn btn-primary">Add Address</button>
+							</div>
+						@endif
 		            </form>
 
 						@if(isset($addresses) && count($addresses) > 0)

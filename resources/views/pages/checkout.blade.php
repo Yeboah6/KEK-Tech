@@ -183,6 +183,15 @@
 								</div>
 						   </div>
 						   <div class="w-100"></div>
+						   <br>
+						   <div>
+							   <h2>Payment Method</h2>
+							   <h4># Cash on Delivery</h4>
+							   <p>We accept cash on delivery for orders within Accra.</p> 
+							   <h4># Cash before Delivery</h4>
+							   <p>For orders outside Accra, payment is required before delivery.</p> 
+							   <p>For any inquiries, please contact us at <strong>+233 24 123 4567</strong> or email us at <strong>
+						   </div>
 						</div>
 					</div>
 				</div>

@@ -162,4 +162,17 @@ class CheckoutController extends Controller
             
         return view('pages.view-orders', compact('orders', 'cartNo'));
     }
+
+    public function viewOrder($id)
+    {
+        $userId = Auth::id();
+        $order = Order::where('id', $id)
+            ->where('customer_id', $userId)
+            ->with(['items.product', 'address'])
+            ->firstOrFail();
+
+        $cartNo = Cart::where('customer_id', auth()->id())->count();
+        
+        return view('pages.single-order', compact('order', 'cartNo'));
+    }
 }

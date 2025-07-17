@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Order;
 use App\Models\Products;
 use App\Models\User;
+use App\Models\Cart;
 use Illuminate\Support\Str;
 
 class MainController extends Controller
@@ -192,10 +193,8 @@ class MainController extends Controller
         return redirect('/admin/orders')->with('success', 'Order Updated Successfully');
     }
 
-    // Delete Order Function
-    // public function deleteOrder($id) {
-    //     $order = Order::findOrFail($id);
-    //     $order->delete();   
-    //     return redirect('/admin/orders')->with('success', 'Order Deleted Successfully');
-    // }
+    public function contact() {
+        $cartNo = Cart::where('customer_id', auth()->id())->count();
+        return view('pages.contact', compact('cartNo'));
+    }
 }

@@ -58,10 +58,11 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/delivery-address', [CheckoutController::class, 'addDeliveryAddress'])->name('delivery.address');
     Route::get('/order-complete/{orderId}', [CheckoutController::class, 'orderComplete'])->name('order.complete');
     Route::get('/view-orders', [CheckoutController::class, 'viewOrders'])->name('view.orders');
+    Route::get('/view-orders/{id}', [CheckoutController::class, 'viewOrder'])->name('view.orders');
 });
 
 // Contact route
-Route::view('/contact', 'pages.contact')->name('contact');
+Route::get('/contact', [MainController::class, 'contact'])->name('contact');
 
 // Authentication Routes
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');

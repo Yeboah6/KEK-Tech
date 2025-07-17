@@ -57,8 +57,8 @@
 							</div>
 						</div>
 
-							@foreach ($joinedCart as $joinedCart)
-							<div class="product-cart d-flex">
+						@foreach ($joinedCart as $joinedCart)
+						<div class="product-cart d-flex">
 							<div class="one-forth">
 								<div class="product-img" style="background-image: url({{asset('storage/uploads/product-images/'.$joinedCart -> product -> product_image)}});">
 								</div>
@@ -121,6 +121,10 @@
 											<p><span><strong>Total:</strong></span> <span>¢{{ number_format($totalPrice, 2) }}</span></p>
 										</div>
 									</div>
+									<br><br>
+									<p><span><strong>NB:</strong></span> All Orders within Accra are Payment on Delivery</p>
+												<strong><h1>&</h1></strong>
+									<p><span><strong>NB:</strong></span> All Orders Outside of Accra are Payment Before Delivery</p>
 								</div>
 							</div>
 						</div>

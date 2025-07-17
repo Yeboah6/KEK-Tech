@@ -61,8 +61,8 @@
                                                 </span>
 											</td>
 											<td>
-												<a href="" class="btn btn-sm btn-primary">View</a>
-												@if($order->status == 'processing')
+												<a href="{{ url('/view-orders/'.$order -> id) }}" class="btn btn-sm btn-primary">View</a>
+												@if($order->status == 'Processing')
 													<button class="btn btn-sm btn-outline-danger cancel-order" data-order-id="{{ $order->id }}">Cancel</button>
 												@endif
 											</td>
@@ -71,12 +71,6 @@
 									</tbody>
 								</table>
 							</div>
-
-							{{-- <div class="row mt-4">
-								<div class="col-md-12">
-									{{ $orders->links() }}
-								</div>
-							</div> --}}
 						@endif
 					</div>
 				</div>

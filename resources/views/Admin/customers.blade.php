@@ -65,8 +65,7 @@
                                                 data-date="{{ $customer -> created_at -> format('d / M / Y') }}">
                                                 <i class="feather icon-eye"></i>
                                             </a>
-                                            {{-- <a href="#!" class="btn btn-info btn-sm"><i class="feather icon-edit"></i>&nbsp;Edit </a> --}}
-                                            <a href="#!" class="btn btn-danger btn-sm"><i class="feather icon-trash-2"></i>&nbsp;Delete </a>
+                                            <a href="{{ url('/admin/customers/delete/'.$customer -> id)}}" class="btn btn-danger btn-sm"><i class="feather icon-trash-2"></i> </a>
                                         </td>
                                     </tr>
                                     @endforeach

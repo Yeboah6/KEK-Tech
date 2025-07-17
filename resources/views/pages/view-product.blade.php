@@ -49,7 +49,7 @@
 							<p class="price">
 								<span>¢{{$product -> price}}</span>
 							</p>
-							<p>{{$product -> description}}</p>
+							<p>{{$product -> stock_quantity}}</p>
 
                             <form action="{{ route('add.to.cart') }}" method="POST">
 								@if (Session::has('success'))
@@ -75,17 +75,17 @@
 									</span>
 								</div>
                                 <input type="text" hidden name="product_id" value="{{$product -> id}}">
-								@if (Session::has('loginId'))
-									<input type="text" hidden name="customer_id" value="{{$data -> id}}">
-								@endif
+								@auth
+									<input type="text" hidden name="customer_id" value="{{ auth()->user()->id }}">
+								@endauth
 							
                   				<div class="row">
 	                  				<div class="col-sm-12 text-center">
-										@if (Session::has('loginId'))
-											<button type="submit" class="btn btn-primary btn-addtocart"><i class="icon-shopping-cart"></i> Add to Cart</button>
+										@auth
+											<button type="submit" class="btn btn-primary btn-addtocart"> Add to Cart</button>
                                         @else
 								        	<p class="addtocart"><a href="/signup" class="btn btn-primary btn-addtocart"><i class="icon-shopping-cart"></i> Add to Cart</a></p>
-								        @endif
+								        @endauth
 									</div>
 								</div>
 							</form>
@@ -107,20 +107,9 @@
 
 								  <div class="tab-content" id="pills-tabContent">
 								    <div class="tab-pane border fade show active" id="pills-description" role="tabpanel" aria-labelledby="pills-description-tab">
-								      <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
-										<p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way.</p>
-										<ul>
-											<li>The Big Oxmox advised her not to do so</li>
-											<li>Because there were thousands of bad Commas</li>
-											<li>Wild Question Marks and devious Semikoli</li>
-											<li>She packed her seven versalia</li>
-											<li>tial into the belt and made herself on the way.</li>
-										</ul>
-								    </div>
-
-								    <div class="tab-pane border fade" id="pills-manufacturer" role="tabpanel" aria-labelledby="pills-manufacturer-tab">
-								      <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
-										<p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way.</p>
+								      <p>
+										{{ $product -> description }}
+										</p>
 								    </div>
 								  </div>
 								</div>

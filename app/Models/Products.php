@@ -13,10 +13,26 @@ class Products extends Model
         'product_name',
         'category',
         'price',
-        'quantity',
+        'stock_quantity',
         'product_image',
         'product_image2',
         'product_image3',
-        'description'
+        'description',
+        'is_featured'
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function carts()
+    {
+        return $this->hasMany(Cart::class);
+    }
+
+    public function orderItems()
+    {
+        return $this->hasMany(OrderItem::class);
+    }
 }

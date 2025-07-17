@@ -1,7 +1,5 @@
 
 <header class="navbar pcoded-header navbar-expand-lg navbar-light header-blue">
-		
-			
     <div class="m-header">
         <a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
         <a href="#!" class="b-brand">
@@ -19,20 +17,20 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right profile-notification">
                         <div class="pro-head">
-                            <img src="../assets1/images/user/avatar-1.jpg" class="img-radius" alt="User-Profile-Image">
-                            <span>{{ $data->username ?? 'Guest' }}</span>
+                            <img src="../assets/images/user.png" class="img-radius" alt="User-Profile-Image">
+                            @auth
+                                {{ auth()->user()->name }}
+                            @endauth
                             <a href="/logout" class="dud-logout" title="Logout">
                                 <i class="feather icon-log-out"></i>
                             </a>
                         </div>
                         <ul class="pro-body">
-                            <li><a href="/profile" class="dropdown-item"><i class="feather icon-user"></i> Profile</a></li>
+                            <li><a href="/admin/profile" class="dropdown-item"><i class="feather icon-user"></i> Profile</a></li>
                         </ul>
                     </div>
                 </div>
             </li>
         </ul>
     </div>
-    
-
 </header>

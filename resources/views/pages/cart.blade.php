@@ -60,15 +60,15 @@
 							@foreach ($joinedCart as $joinedCart)
 							<div class="product-cart d-flex">
 							<div class="one-forth">
-								<div class="product-img" style="background-image: url({{asset('storage/uploads/product-images/'.$joinedCart -> product_image)}});">
+								<div class="product-img" style="background-image: url({{asset('storage/uploads/product-images/'.$joinedCart -> product -> product_image)}});">
 								</div>
 								<div class="display-tc">
-									<h3>{{$joinedCart -> product_name}}</h3>
+									<h3>{{$joinedCart -> product -> product_name}}</h3>
 								</div>
 							</div>
 							<div class="one-eight text-center">
 								<div class="display-tc">
-									<span class="price">{{$joinedCart -> price}}</span>
+									<span class="price">{{$joinedCart -> product -> price}}</span>
 								</div>
 							</div>
 							<div class="one-eight text-center">
@@ -78,13 +78,13 @@
 							</div>
 							<div class="one-eight text-center">
 								<div class="display-tc">
-									{{ isset($joinedCart -> price) ? $joinedCart -> price * $joinedCart -> cart_quantity : 'N/A' }}
+									{{ isset($joinedCart -> product -> price) ? $joinedCart -> product -> price * $joinedCart -> cart_quantity : 'N/A' }}
 									</span>
 								</div>
 							</div>
 							<div class="one-eight text-center">
 								<div class="display-tc">
-									<a href="{{url('/remove-from-cart/'.$joinedCart -> cart_id)}}" class="closed"></a>
+									<a href="{{url('/remove-from-cart/'.$joinedCart -> id)}}" class="closed"></a>
 								</div>
 							</div>
 						</div>
@@ -102,10 +102,11 @@
 										<div class="row form-group">
 											<div class="col-sm-3">
 												<a href="/checkout"><input type="submit" value="Proceed to Checkout" class="btn btn-primary"></a>
-												<input type="text" name="total" value="{{ number_format($totalPrice) }}" class="form-control">
-												<input type="text" name="customer_id" value="{{ $data -> id }}" class="form-control">
-												<input type="text" name="cart_id" value="{{ implode(', ', $customerCartIds) }}" class="form-control">
-												<input type="text" name="order_id" class="form-control">
+												<input type="text" hidden name="total" value="{{ number_format($totalPrice) }}" class="form-control">
+												<input type="text" hidden name="customer_id" value="{{ auth()->user()->id }}" class="form-control">
+												@foreach ($customerCartIds as $cart_id)
+													<input type="hidden" class="form-control" name="cart_ids[]" value="{{ $cart_id }}">
+												@endforeach
 											</div>
 										</div>
 									</form>

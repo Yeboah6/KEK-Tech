@@ -16,12 +16,13 @@ return new class extends Migration
             $table -> string('product_id');
             $table -> string('product_name');
             $table -> string('category');
-            $table -> string('price');
+            $table->decimal('price', 10, 2);
             $table -> string('product_image');
             $table -> string('product_image2') -> nullable();
             $table -> string('product_image3') -> nullable();
             $table -> text('description');
-            $table -> string('quantity');
+            $table->integer('stock_quantity')->default(0);
+            $table->boolean('is_featured')->default(false);
             $table->timestamps();
         });
     }

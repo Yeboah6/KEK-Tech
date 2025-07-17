@@ -14,11 +14,9 @@ return new class extends Migration
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
 
-            $table -> bigInteger('customer_id')->unsigned()->index()->nullable();
-            $table -> foreign('customer_id') -> references('id') -> on('customers') ->onDelete('cascade');
-
-            $table -> string('product_id'); // Link address_id to Delivery Address
-            $table -> string('cart_quantity');
+            $table->foreignId('customer_id')->constrained('users');
+            $table->foreignId('product_id')->constrained();
+            $table->integer('cart_quantity')->default(1);
             $table->timestamps();
         });
     }

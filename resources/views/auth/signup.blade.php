@@ -30,7 +30,7 @@
 					<div class="card-body">
                         <h3>KEK Tech</h3>
 						<h4 class="mb-3 f-w-400">Sign up</h4>
-                        <form action="{{ url('/signup') }}" method="POST">
+                        <form action="{{ route('register') }}" method="POST">
                             @if (Session::has('success'))
 				    	        <div class="alert alert-success">{{ Session::get('success') }}</div>
 				            @endif
@@ -49,13 +49,13 @@
 						    </div>
 							<div class="form-group mb-3">
 						    	<label class="floating-label" for="number">Phone Number</label>
-						    	<input type="text" class="form-control" id="Username" placeholder="" name="number">
+						    	<input type="text" class="form-control" id="Username" placeholder="" name="phone">
 						    </div>
 						    <div class="form-group mb-4">
 						    	<label class="floating-label" for="Password">Password</label>
 						    	<input type="password" class="form-control" id="Password" placeholder="" name="password">
 						    </div>
-						    <button class="btn btn-block mb-4" style="background-color: #88C8BC;color: #fff;">Sign up</button>
+						    <button type="submit" class="btn btn-block mb-4" style="background-color: #88C8BC;color: #fff;">Sign up</button>
 						    <p class="mb-2">Already have an account? <a href="login" class="f-w-400">login</a></p>
                         </form>
 					</div>

@@ -30,7 +30,7 @@
 					<div class="card-body">
                         <h3>KEK Tech</h3>
 						<h4 class="mb-3 f-w-400">Login</h4>
-                        <form action="{{ url('/login') }}" method="POST">
+                        <form action="{{ route('login') }}" method="POST">
                             @if (Session::has('success'))
 				    	        <div class="alert alert-success">{{ Session::get('success') }}</div>
 				            @endif

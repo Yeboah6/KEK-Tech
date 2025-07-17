@@ -9,10 +9,24 @@ class Order extends Model
     protected $table = 'orders';
 
     protected $fillable = [
-        'order_id',
         'customer_id',
-        'cart_id',
-        'address_id',
-        'total'
+        'order_number',
+        'total_amount',
+        'status'
     ];
+
+    public function customer()
+    {
+        return $this->belongsTo(User::class, 'customer_id');
+    }
+
+    public function items()
+    {
+        return $this->hasMany(OrderItem::class);
+    }
+
+    public function address()
+    {
+        return $this->hasOne(OrderAddress::class);
+    }
 }

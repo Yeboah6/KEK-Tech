@@ -85,36 +85,34 @@
                                         <th>Qty</th>
                                         <th>Date</th>
                                         <th>Status</th>
-                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>John Deo</td>
-                                        <td>#814123</td>
-                                        <td><img src="../assets/images/widget/PHONE1.jpg" alt="" class="img-fluid"></td>
-                                        <td>Moto G5</td>
-                                        <td>10</td>
-                                        <td>17-2-2019</td>
-                                        <td><label class="badge badge-light-warning">Pending</label></td>
-                                        <td>
-                                            {{-- <a href="#!"><i class="icon feather icon-edit f-w-600 f-16 m-r-15 text-c-green"></i></a> --}}
-                                            <a href="#!"><i class="feather icon-trash-2 f-w-600 f-16 text-c-red"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Jenny William</td>
-                                        <td>#684898</td>
-                                        <td><img src="../assets/images/widget/PHONE2.jpg" alt="" class="img-fluid"></td>
-                                        <td>iPhone 8</td>
-                                        <td>16</td>
-                                        <td>20-2-2019</td>
-                                        <td><label class="badge badge-light-primary">Paid</label></td>
-                                        <td>
-                                            {{-- <a href="#!"><i class="icon feather icon-edit f-w-600 f-16 m-r-15 text-c-green"></i></a> --}}
-                                            <a href="#!"><i class="feather icon-trash-2 f-w-600 f-16 text-c-red"></i></a>
-                                        </td>
-                                    </tr>
+                                    @foreach($orders as $order)
+                                        @foreach ($order -> items as $item)
+                                            <tr>
+                                                <td>{{ $order -> customer -> name}}</td>
+                                                <td>#{{ $order -> order_number}}</td>
+                                                <td><img src="{{ asset('storage/uploads/product-images/' . $item -> product -> product_image) }}" alt="" class="rounded mr-3" height="48"></td>
+                                                <td>{{ $item -> product -> product_name }}</td>
+                                                <td>{{ $item -> quantity }}</td>
+                                                <td>{{ $order -> created_at->format('d-m-Y') }}</td>
+                                                <td>
+                                                    <span>
+                                                        @if ($order -> status == 'Completed') 
+                                                            <span class="badge badge-success">Completed</span>
+                                                        @elseif ($order -> status == 'Processing')
+                                                            <span class="badge badge-primary">Processing</span>
+                                                        @elseif ($order -> status == 'Cancelled')
+                                                            <span class="badge badge-danger">Cancelled</span>
+                                                        @elseif($order -> status == 'pending')
+                                                            <span class="badge badge-secondary">Pending</span>
+                                                        @endif
+                                                    </span>
+											    </td>
+                                            </tr>
+                                        @endforeach
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

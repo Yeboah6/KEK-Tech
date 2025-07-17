@@ -8,7 +8,10 @@ class Category extends Model
 {
     protected $table = 'categories';
 
-    protected $fillable = [
-        'category'
-    ];
+    protected $fillable = ['category', 'image'];
+
+    public function products()
+    {
+        return $this->hasMany(Products::class);
+    }
 }

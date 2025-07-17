@@ -14,14 +14,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-       \App\Models\Admin::create([
-            'username' => 'Admin',
-            'email' => 'ecommerce@admin.com',
-            'password' => Hash::make('1234567890')
-        ]);
-
         \App\Models\Category::create([
             'category' => 'Sony',
             'image' => '../assets/images/image8.jpg'

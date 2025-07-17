@@ -13,9 +13,7 @@ return new class extends Migration
     {
         Schema::create('delivery_addresses', function (Blueprint $table) {
             $table->id();
-            $table -> bigInteger('customer_id')->unsigned()->index()->nullable();
-            $table -> foreign('customer_id') -> references('id') -> on('customers') ->onDelete('cascade');
-
+            $table->foreignId('customer_id')->constrained('users');
             $table -> string('country');
             $table -> string('first_name');
             $table -> string('last_name');
@@ -26,7 +24,7 @@ return new class extends Migration
             $table -> string('state');
             $table -> string('zip_code');
             $table -> string('email');
-            $table -> string('number');
+            $table -> string('phone');
             $table->timestamps();
         });
     }

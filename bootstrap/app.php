@@ -13,7 +13,9 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware): void {
          $middleware->alias([
             'isLoggedIn' => \App\Http\Middleware\AuthCheck::class,
-            'isAdminLoggedIn' => \App\Http\Middleware\AdminAuthCheck::class
+            'isAdminLoggedIn' => \App\Http\Middleware\AdminAuthCheck::class,
+            'admin' => \App\Http\Middleware\AdminMiddleware::class,
+            \App\Http\Middleware\ShareUserData::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

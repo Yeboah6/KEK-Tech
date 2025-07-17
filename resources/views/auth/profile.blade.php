@@ -18,7 +18,7 @@
                                  <div class="row">
                                      <div class="col-md-6">
                                         <div class="clearfix"></div>
-                                        <a href="mailto:{{$data -> email}}" class="mb-1 text-muted d-flex align-items-end text-h-primary"><i class="feather icon-mail mr-2 f-18"></i>{{$data -> email}}</a>
+                                        <a href="mailto:{{auth() -> user() -> email}}" class="mb-1 text-muted d-flex align-items-end text-h-primary"><i class="feather icon-mail mr-2 f-18"></i>{{auth() -> user() -> email}}</a>
                                         <div class="clearfix"></div>
                                      </div>
                                  </div>
@@ -48,7 +48,7 @@
 						                @if (Session::has('fail'))
 						                	<div class="alert alert-danger">{{ Session::get('fail') }}</div>
 						                @endif
-                                     <button type="button" class="btn btn-sm rounded m-0 float-right" style="background-color: #116530;color: #fff" data-toggle="collapse" data-target=".pro-det-edit" aria-expanded="false" aria-controls="pro-det-edit-1 pro-det-edit-2">
+                                     <button type="button" class="btn btn-primary btn-sm rounded m-0 float-right" data-toggle="collapse" data-target=".pro-det-edit" aria-expanded="false" aria-controls="pro-det-edit-1 pro-det-edit-2">
                                          <i class="feather icon-edit"></i>
                                      </button>
                                  </div>
@@ -56,55 +56,36 @@
                                          <div class="form-group row">
                                              <label class="col-sm-3 col-form-label font-weight-bolder">Email</label>
                                              <div class="col-sm-9">
-                                                {{$data -> email}}
+                                               {{auth() -> user() -> email}}
                                              </div>
                                          </div>
                                  </div>
                                  <div class="card-body border-top pro-det-edit collapse " id="pro-det-edit-2">
-                                     <form action="{{ url('/profile') }}" method="POST">
-
+                                     <form action="{{ route('admin.update.profile') }}" method="POST">
                                         @csrf
 
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label font-weight-bolder">Email</label>
                                                 <div class="col-sm-9">
-                                                   <input type="email" class="form-control" name="email" placeholder="Enter Email" value="{{$data -> email}}">
+                                                   <input type="email" class="form-control" name="email" placeholder="Enter Email" value="{{auth() -> user() -> email}}">
                                                 </div>
                                              </div>
                                             <div class="form-group row">
-                                                <label class="col-sm-3 col-form-label font-weight-bolder">Username</label>
+                                                <label class="col-sm-3 col-form-label font-weight-bolder">Name</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" name="username" placeholder="Enter Username" value="{{$data -> username}}">
+                                                    <input type="text" class="form-control" name="name" placeholder="Enter Name" value="{{auth() -> user() -> name}}">
                                                 </div>
                                             </div>
                                          <div class="form-group row">
-                                            <label class="col-sm-3 col-form-label font-weight-bolder">New Username</label>
+                                            <label class="col-sm-3 col-form-label font-weight-bolder">Password</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" name="new_username" placeholder="Enter New Username" value="{{old('new_username')}}">
+                                                <input type="passwrod" class="form-control" name="password" placeholder="Enter New Password">
                                             </div>
                                         </div>
-                                         <div class="form-group row">
-                                            <label class="col-sm-3 col-form-label font-weight-bolder">New Email</label>
-                                            <div class="col-sm-9">
-                                                <input type="email" class="form-control" name="new_email" placeholder="Enter New Email" value="{{old('new_email')}}">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-sm-3 col-form-label font-weight-bolder">New Password</label>
-                                            <div class="col-sm-9">
-                                                <input type="password" class="form-control" name="new_password">
-                                            </div>
-                                        </div>
-                                         <div class="form-group row">
-                                             <label class="col-sm-3 col-form-label font-weight-bolder">Confirm Password</label>
-                                             <div class="col-sm-9">
-                                                <input type="password" class="form-control" name="confirm_password">
-                                             </div>
-                                         </div>
                                          <div class="form-group row">
                                              <label class="col-sm-3 col-form-label"></label>
                                              <div class="col-sm-9">
-                                                 <button type="submit" class="btn" style="background-color: #116530;color: #fff">Save</button>
+                                                 <button type="submit" class="btn btn-primary" style="color: #fff">Update</button>
                                              </div>
                                          </div>
                                      </form>
